@@ -4,7 +4,7 @@ import numpy as np
 
 
 def detect_villa(frame):
-    kernel = np.ones((5, 5), np.uint8)
+    kernel = cv2.getStructuringElement(cv2.MORPH_RECT, (5, 5))
     morphological_img = cv2.morphologyEx(frame, cv2.MORPH_GRADIENT, kernel)
     canny_img = cv2.Canny(morphological_img, 200, 300)
     contours, _ = cv2.findContours(
